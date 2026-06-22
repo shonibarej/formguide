@@ -20,30 +20,8 @@ FormGuide doesn't replace the official application — it prepares the applicant
 
 ## Architecture
 
-FormGuide separates **form-agnostic orchestration** from **form-specific knowledge**, so additional UK government forms can be added later as new skills without modifying the core agent.
 
-```
-User message
-      │
-      ▼
-formguide_orchestrator (ADK 2.0 Agent)
-      │
-      ├─► before_agent_callback (deterministic state machine)
-      │     • loads the active skill (.agents/skills/universal-credit/SKILL.md)
-      │     • finds the next unanswered question, respecting conditional logic
-      │     • checks eligibility rules declared in the skill — in Python, not the LLM
-      │     • builds the next instruction for the model
-      │
-      ├─► Tools
-      │     • submit_answer        — records a verified answer, sanitizes free text
-      │     • get_next_question    — looks up what comes next from current state
-      │     • confirm_details      — gates final output behind explicit user confirmation
-      │     • generate_summary_pdf — renders the LLM's written summary as a PDF
-      │     • postcode MCP tool    — validates UK postcodes via postcodes.io (custom MCP server)
-      │
-      ▼
-Plain-English response + (on confirmation) a generated PDF summary
-```
+<img width="2800" height="3040" alt="formguide_architecture_v2" src="https://github.com/user-attachments/assets/ffcfac78-19eb-42cf-87d5-544f7415570e" />
 
 ### Why this design
 
