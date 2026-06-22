@@ -101,7 +101,8 @@ Open the printed local URL, select **app**, and start a session with:
 
 ## Limitations
 
-- **Not deployed to a live public endpoint.** Tested thoroughly in ADK's local web playground; Cloud Run deployment was scoped out given submission timeline constraints. ADK's local playground demo is shown in full in the accompanying video.
+- **Not deployed to a live public endpoint.** Tested thoroughly in ADK's local web playground; a `Dockerfile` and Cloud Run-ready FastAPI entry point (`app/fast_api_app.py`) are included and scaffolded correctly, but an actual deployment was scoped out given submission timeline constraints. ADK's local playground demo is shown in full in the accompanying video.
+- **Testing was manual, not automated.** The eligibility paths, conditional logic, MCP tool firing, and PII handling were all verified through direct, repeated manual testing in the ADK web playground rather than an automated evaluation harness.
 - **Conversational, not authenticated.** FormGuide does not log into GOV.UK or submit anything on the user's behalf — it produces a preparation document the user reviews and uses themselves, by design (see Architecture).
 - **Single form.** Only Universal Credit is implemented. The architecture is designed to support additional UK government forms as new skills without changing the orchestrator, but no second form has been built yet.
 - **Postcode data source.** Validation uses the open-data postcodes.io API. For full address-line lookup at production scale, a licensed dataset (e.g. Royal Mail) would be more complete.
