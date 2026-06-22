@@ -1,4 +1,4 @@
-# FormGuide
+# FormGuide: A Conversational Preparation Assistant for Universal Credit
 
 A conversational AI agent that helps UK residents prepare a Universal Credit application — gathering the right information in plain English, validating it, and producing a clean reference document to use on the official GOV.UK application.
 
